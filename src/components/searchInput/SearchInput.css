@@ -1,0 +1,103 @@
+
+.s128 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background: #FEFEFE;
+  padding: 15px;
+  width: 300px;
+}
+
+.s128 form {
+  width: 100%;
+}
+
+.s128 form .inner-form .row .input-field {
+  position: relative;
+}
+
+.s128 form .inner-form .row .input-field input {
+  height: 40px;
+  width: 40px;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.s128 form .inner-form .row .input-field input.placeholder {
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 300;
+  opacity: 1;
+}
+
+.s128 form .inner-form .row .input-field input::-webkit-input-placeholder {
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 300;
+  opacity: 1;
+}
+
+.s128 form .inner-form .row .input-field input:hover, .s128 form .inner-form .row .input-field input:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+
+.s128 form .inner-form .row .input-field.first .clear {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  z-index: 10;
+  color: #ccc;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .3s ease-out;
+}
+
+.s128 form .inner-form .row .input-field.first .clear svg {
+  fill: rgb(187, 187, 187);
+  width: 22px;
+  height: 22px;
+}
+
+.s128 form .inner-form .row .input-field.first .clear:hover, .s128 form .inner-form .row .input-field.first .clear:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+.s128 form .inner-form .row .input-field.first .clear:hover svg, .s128 form .inner-form .row .input-field.first .clear:focus svg {
+  fill: #be0000;
+}
+
+.s128 form .inner-form .row .input-field.first input {
+  padding: 10px 0 8px 40px;
+  border-radius: 30px;
+  width: 10px;
+  transition: all .3s ease-in;
+  background-image: url("icons/searchIcon.svg");
+  background-position: 8px 8px;
+  background-repeat: no-repeat;
+  background-color: rgb(239, 239, 239);
+  background-size: 25px 25px;
+}
+
+.s128 form .inner-form .row .input-field.first input:focus {
+  width: 100%;
+  padding-right: 60px;
+}
+
+.s128 form .inner-form .row .input-field.first input.isFocus {
+  width: 100%;
+}
+
+.s128 form .inner-form .row .input-field.first input.isFocus ~ .clear {
+  opacity: 1;
+}
