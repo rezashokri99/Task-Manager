@@ -2,9 +2,37 @@
     width: 80%;
     background-color: #FEFEFE;
     display: flex;
-    padding: 30px 10px;
+    padding: 30px 30px 30px 10px ;
 }
 
 .mainHeader {
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+}
+
+.userInfo{
+    display: flex;
+    align-items: center;
+}
+
+.userInfo svg {
+    width: 21px;
+    height: 21px;
+}
+
+.notificationContainer {
+    position: relative;
+}
+
+.userInfo .badgeNotification{
+	position: absolute;
+    background-color: goldenrod;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    right: 3px;
+    top: 1px;
 }

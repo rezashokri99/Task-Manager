@@ -16,12 +16,19 @@ const SearchInput = () => {
   };
 
   const focusHandler = (e) => {
+    inputFocus.current.style.width = "100%";
     if (inputFocus.current.id.includes(e.target.id)) {
       inputFocus.current.classList.add("isFocus");
     } else {
-      inputFocus.classList.remove("isFocus");
+      inputFocus.current.classList.remove("isFocus");
     }
   };
+
+  const blurHandler = () => {
+    inputFocus.current.style.width = "10px";
+    inputFocus.current.classList.remove("isFocus");
+  }
+
 
   return (
     <div className="s128">
@@ -33,6 +40,7 @@ const SearchInput = () => {
                 ref={inputFocus}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                onBlur={blurHandler}
                 onClick={focusHandler}
                 className="input"
                 id="inputFocus"

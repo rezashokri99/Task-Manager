@@ -7,6 +7,7 @@
   background: #FEFEFE;
   padding: 15px;
   width: 300px;
+  height: fit-content;
 }
 
 .s128 form {

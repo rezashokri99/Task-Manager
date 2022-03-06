@@ -1,0 +1,137 @@
+.userinfoContainer{
+    display: flex;
+    align-items: center;
+	margin-left: 30px;
+}
+
+details {
+	position: relative;
+	width: 110px;
+	margin-right: 1rem;
+}
+
+details[open] {
+	z-index: 1;
+}
+
+summary {
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: transparent;
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+details[open] summary:before {
+	content: '';
+	display: block;
+	/* width: 100vw;
+	height: 100vh;
+	background: transparent;
+	position: fixed;
+	top: 0;
+	left: 0; */
+}
+
+summary:after {
+	margin-left: 10px;
+	margin-bottom: 5px;
+	content: '';
+	display: inline-block;
+	float: right;
+	width: .4rem;
+	height: .4rem;
+	border-bottom: 2px solid currentColor;
+	border-left: 2px solid currentColor;
+	border-bottom-left-radius: 2px;
+	transform-origin: center center;
+	transition: transform ease-in-out 200ms;
+	transform: rotate(-45deg) translate(0%, 0%);
+}
+
+summary:focus {
+	outline: none;
+}
+
+details[open] summary:after {
+    transform: rotate(45deg) translate(50%, 0%);
+}
+
+.list {
+	width: 100%;
+    list-style: none;
+	background: transparent;
+	position: absolute;
+	top: calc(100% + .5rem);
+	left: 0;
+	padding: 1rem;
+	margin: 0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.list li {
+	margin: 0;
+	padding: .5rem 0;
+}
+
+.list li:first-child {
+	padding-top: 0;
+}
+
+.list li:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+/* FAKE SELECT */
+
+summary.radios {
+	counter-reset: radios;
+}
+
+input[type=radio] {
+	counter-increment: radios;
+	appearance: none;
+	display: none;
+}
+
+input[type=radio]:checked {
+	display: inline;
+    color: #000;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-weight: 600;
+}
+
+input[type=radio]:after {
+	content: attr(title);
+	display: inline;
+	font-size: 1rem;
+}
+
+.list {
+	counter-reset: labels;
+}
+
+label {
+	width: 100%;
+	display: block;
+	cursor: pointer;
+    color: #8d8d8d;
+}
+label:hover {
+	color: #272727;
+}
+
+.userImage {
+    width: 35px;
+    border-radius: 50%;
+}
+
