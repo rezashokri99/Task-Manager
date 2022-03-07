@@ -1,12 +1,12 @@
 .appTodoContainer {
     width: 100%;
     background-color: #FEFEFE;
-    padding: 30px 50px 30px 30px ;
+    padding: 30px 50px 30px 30px;
     height: fit-content;
-    min-height: 500px;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 

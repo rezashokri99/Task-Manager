@@ -1,0 +1,125 @@
+.todo, .progress, .completed{
+    background-color: #FFFFFF;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.todo .todoHeaderSection, .progress .progressHeaderSection, .completed .completedHeaderSection  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* .todo .todoHeaderSection svg , .progress .progressHeaderSection svg , .completed .completedHeaderSection svg {
+    width: 20px;
+    height: 20px;
+} */
+
+
+.todo .todoMainSection, .progress .progressMainSection, .completed .completedMainSection {
+    margin: 20px 0;
+}
+
+.todo .todoMainSection p, .progress .progressMainSection p, .completed .completedMainSection p {
+    font-size: .9rem;
+    color: #7c7c7c;
+    word-spacing: 1px;
+}
+
+
+.todo .todofooterSection, .progress .progressfooterSection, .completed .completedfooterSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.todo .todofooterSection p, .progress .progressfooterSection p, .completed .completedfooterSection p {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #949494;
+    font-size: .8rem;
+}
+
+
+.menu {
+    position: relative;
+    top: 0px;
+    padding: 15px;
+    background: #e7e7e7;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px white, inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
+}
+.menu::before {
+    content: url(../assets/icons/more.svg);
+    background: transparent;
+    border-radius: 5px;
+    width: 18px;
+    height: 3px;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    transition: 0.2s ease;
+    z-index: 1;
+}
+/* .menu::before {
+    transform: rotate(0deg);
+} */
+/* .menu::after {
+    transform: rotate(-90deg);
+} */
+.menu.open {
+    opacity: 0.9;
+}
+.menu.open::before {
+    left: 14px;
+    top: 14px;
+    transform: rotate(90deg);
+}
+/* .menu.open::after {
+    transform: rotate(-45deg);
+} */
+.menu.open .button {
+    opacity: 1;
+    pointer-events: auto;
+}
+.menu.open .button:first-of-type {
+    bottom: 0px;
+    right: 35px;
+    background: url("../assets/icons/taskToInProgress.svg") no-repeat 50%/50% #5f5f5f;
+    background-size: 18px;
+}
+.menu.open .button:nth-of-type(2) {
+    bottom: 0px;
+    right: 70px;
+    background: url("../assets/icons/delete.svg") no-repeat 50%/50% #5f5f5f;
+    transition-delay: 0.05s;
+}
+.menu.open .button:last-of-type {
+    bottom: 0px;
+    right: 105px;
+    background: url("../assets/icons/edit.svg") no-repeat 50% 45%/50% 45% #5f5f5f;
+    color: #FFF;
+    transition-delay: 0.1s;
+}
+
+.button {
+
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #e8e8f3;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: inherit;
+    transition: 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28), 0.2s ease opacity, 0.2s cubic-bezier(0.08, 0.82, 0.17, 1) transform;
+}
+.button:hover {
+    transform: scale(1.1);
+}

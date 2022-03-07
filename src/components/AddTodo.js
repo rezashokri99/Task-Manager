@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -7,6 +6,9 @@ import Select from '@mui/material/Select';
 import TextField from "@mui/material/TextField";
 import styles from "./AppTodo.module.css";
 import { Button, TextareaAutosize } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+
 
 const AddTodo = () => {
 
@@ -15,6 +17,9 @@ const AddTodo = () => {
         status: "",
         description: ""
     });
+
+    const navigate = useNavigate();
+
 
     const changeHandler = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -30,18 +35,23 @@ const AddTodo = () => {
             tasks = tasksLS;
         }
 
-        let nowDate = Date.now();
-        console.log(nowDate);
+        let nowDate = new Date();
+        nowDate = nowDate.toLocaleString();
 
-        let task = {
+        let newTask = {
             id: tasks.length,
             status: form.status,
             title: form.title,
             description: form.description,
-            createdTime: "3/6/2022, 11:14:02 PM",
-            updatedTime: "3/6/2022, 11:14:02 PM"
+            createdTime: nowDate,
+            updatedTime: nowDate
         }
-        tasks.push()
+
+        tasks.push(newTask)
+
+        localStorage.setItem("taskData", JSON.stringify(tasks));
+
+        navigate("/taskmanager");
     };
 
 

@@ -5,6 +5,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import UserInfo from "./userInfo/UserInfo";
 import TaskManager from "./TaskManager";
 import AddTodo from "./AddTodo";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 
 const Main = () => {
@@ -22,8 +23,11 @@ const Main = () => {
       </div>
 
       <div className={styles.taskManagerContainer}>
-        {/* <TaskManager /> */}
-        <AddTodo />
+        <Routes>
+          <Route path="/taskmanager" element={<TaskManager />} />
+          <Route path="/addtodo" element={<AddTodo />} />
+          <Route path="/*" element={<Navigate to="/taskmanager" />} />
+        </Routes>
       </div>
     </div>
   );
