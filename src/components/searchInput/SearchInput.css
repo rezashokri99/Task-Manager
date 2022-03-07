@@ -6,6 +6,7 @@
   font-family: 'Poppins', sans-serif;
   background: #FEFEFE;
   padding: 15px;
+  padding-left: 0;
   width: 300px;
   height: fit-content;
 }

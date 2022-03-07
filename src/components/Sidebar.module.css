@@ -1,9 +1,9 @@
 .sidebarContainer {
     width: 20%;
     background-color: #fff;
-    border-right: 1px solid #EBEBEB;
     padding: 50px 0 0 60px;
-    
+    position: fixed;
+    height: 100vh;
 }
 .title{
     font-size: 1.4rem;

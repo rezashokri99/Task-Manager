@@ -1,8 +1,11 @@
 .mainContainer {
     width: 80%;
     background-color: #FEFEFE;
-    display: flex;
-    padding: 30px 30px 30px 10px ;
+    padding: 30px 50px 30px 30px ;
+    border-left: 1px solid #EBEBEB;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .mainHeader {
@@ -11,6 +14,7 @@
     justify-content: space-between;
     width: 100%;
     height: 100px;
+    margin-bottom: 10px;
 }
 
 .userInfo{
@@ -36,3 +40,4 @@
     right: 3px;
     top: 1px;
 }
+

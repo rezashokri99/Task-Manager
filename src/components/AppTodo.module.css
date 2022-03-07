@@ -1,0 +1,30 @@
+.appTodoContainer {
+    width: 100%;
+    background-color: #FEFEFE;
+    padding: 30px 50px 30px 30px ;
+    height: fit-content;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.addTodoTitle {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+
+.selectStatusTodo {
+    margin: 10px 0 !important;
+}
+
+.selectStatusTodo legend {
+    font-size: 1.2rem;
+}
