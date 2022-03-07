@@ -1,9 +1,10 @@
 .mainContainer {
     width: 80%;
-    height: 100%;
+    height: fit-content;
+    min-height: 100%;
     background-color: #FEFEFE;
     padding: 30px 50px 30px 30px ;
-    border-left: 1px solid #EBEBEB;
+    border-left: 1px solid #dddddd;
     position: absolute;
     right: 0;
     top: 0;
