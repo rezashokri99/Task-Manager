@@ -21,6 +21,24 @@ const InProgress = (props) => {
     };
 
 
+    const editHandler = () => {
+        props.dispatchData({type: "EDIT", id: props.id});
+    }
+
+    const deleteHandler = () => {
+        props.dispatchData({type: "DELETE", id: props.id});
+    }
+
+    const addToInProgressHandler = () => {
+        props.dispatchData({type: "ADDTOINPROGRESS", id: props.id});
+    }
+
+    const addToTodoListHandler = () => {
+        props.dispatchData({type: "ADDTOTodoList", id: props.id});
+    }
+
+
+
 
     return (
         <div key={props.id} className={styles.completed}>
@@ -32,7 +50,7 @@ const InProgress = (props) => {
                         
 
                     <div className={`${styles.con} ${styles.button}`}>
-                        <div className={`${styles.conTooltip} ${styles.top}`}>
+                        <div className={`${styles.conTooltip} ${styles.top}`} onClick={addToInProgressHandler}>
                             <p> <img src={ToInProgressIcon} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
                             <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
                                 <p>Add to inprogress</p>
@@ -40,16 +58,16 @@ const InProgress = (props) => {
                         </div>
                     </div>
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={addToTodoListHandler}>
                             <div className={`${styles.conTooltip} ${styles.top}`}>
                                 <p> <img src={taskToTodoList} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
                                 <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
-                                    <p>Add to Completed</p>
+                                    <p>Add to Todolist</p>
                                 </div>
                             </div>
                     </div>
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={deleteHandler}>
                         <div className={`${styles.conTooltip} ${styles.top}`}>
                             <p> <img src={deleteIcom} style={{width: "16px", margin: "3px .5px"}} alt="editIcon" /> </p>
                             <div className={styles.tooltip} >
@@ -58,7 +76,7 @@ const InProgress = (props) => {
                         </div>
                     </div>
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={editHandler}>
                         <div className={`${styles.conTooltip} ${styles.top}`}>
                             <p> <img src={editIcom} style={{width: "14px", margin: "2px 1px"}} alt="editIcon" /> </p>
                             <div className={styles.tooltip} >

@@ -1,21 +1,94 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import Todo from "./Todo";
 import styles from "./TaskManager.module.css";
 import { MdMoreVert } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InProgress from "./InProgress";
 import Completed from "./Completed";
 
 
 
 
+
+
+    
+
+
 const TaskManager = () => {
-  const [tasksData, setTasksData] = useState(JSON.parse(localStorage.getItem("taskData")));
+
+  const navigate = useNavigate();
+  
+
+  const initialState = JSON.parse(localStorage.getItem("taskData"));
+
+  const reducerData = (state, action) => {
+    switch (action.type) {
+      case "EDIT":
+        navigate("/addtodo");
+        localStorage.setItem("editTask", JSON.stringify({...state.find((task) => task.id === action.id && task), typeHandler: "edit"}));
+        return state;
+
+      case "DELETE":
+        const tasks = [...state];
+        const indexTask = tasks.findIndex((task) => task.id === action.id);
+
+        tasks.splice(indexTask, 1);
+        tasks.map((task, index) => task.id = index);
+        
+        localStorage.setItem("taskData", JSON.stringify(tasks));
+        return tasks;
+
+      case "ADDTOINPROGRESS" :{
+        const tasks = [...state];
+        const indexTask = tasks.findIndex((task) => task.id === action.id);
+        const task = tasks.find((task) => task.id === action.id);
+        
+        task.status = "inProgress";
+        tasks[indexTask] = task;
+
+        localStorage.setItem("taskData", JSON.stringify(tasks));
+        return tasks;
+      }
+
+      case "ADDTOINCOMPLETED" : {
+        const tasks = [...state];
+        const indexTask = tasks.findIndex((task) => task.id === action.id);
+        const task = tasks.find((task) => task.id === action.id);
+        
+        task.status = "completed";
+        tasks[indexTask] = task;
+
+        localStorage.setItem("taskData", JSON.stringify(tasks));
+        return tasks;
+      }
+
+      case "ADDTOTodoList":{
+        const tasks = [...state];
+        const indexTask = tasks.findIndex((task) => task.id === action.id);
+        const task = tasks.find((task) => task.id === action.id);
+        
+        task.status = "todo";
+        tasks[indexTask] = task;
+
+        localStorage.setItem("taskData", JSON.stringify(tasks));
+        return tasks;
+      }
+        
 
 
-  const todosTask = tasksData.filter((task) => task.status === "todo");
-  const inProgressTask = tasksData.filter((task) => task.status === "inProgress");
-  const completedTask = tasksData.filter((task) => task.status === "completed");
+      default:
+        return state;
+    }
+  }
+  
+  // const [tasksData, setTasksData] = useState(JSON.parse(localStorage.getItem("taskData"))); 
+  const [tasksData, dispatchData] = useReducer(reducerData, initialState);
+
+
+
+  const todosTask = tasksData && tasksData.filter((task) => task.status === "todo");
+  const inProgressTask = tasksData && tasksData.filter((task) => task.status === "inProgress");
+  const completedTasks = tasksData && tasksData.filter((task) => task.status === "completed");
 
   
 
@@ -42,7 +115,7 @@ const TaskManager = () => {
           <div className={styles.todosList}>
 
             {
-              todosTask.map((task) => <Todo key={task.id} {...task} />)
+              todosTask && todosTask.map((task) => <Todo key={task.id} dispatchData={dispatchData} {...task} />)
             }
 
 
@@ -118,8 +191,8 @@ const TaskManager = () => {
 
           <div className={styles.progressesList}>
 
-          {
-              inProgressTask.map((task) => <InProgress key={task.id} {...task} />)
+            {
+              inProgressTask && inProgressTask.map((task) => <InProgress key={task.id} dispatchData={dispatchData} {...task} />)
             }
 
             {/* <div className={styles.progress}>
@@ -195,8 +268,8 @@ const TaskManager = () => {
           <div className={styles.completedsList}>
 
 
-          {
-            completedTask.map((task) => <Completed key={task.id} {...task} />)
+            {
+             completedTasks && completedTasks.map((task) => <Completed key={task.id} dispatchData={dispatchData} {...task} />)
             }
 
           </div>

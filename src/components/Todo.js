@@ -10,7 +10,7 @@ import taskToCompleted from "../assets/icons/taskToCompleted.svg";
 
 const Todo = (props) => {
 
-
+    
     const [isActiveEdit, setActiveEdit] = useState(false);
 
     const listRef = useRef();
@@ -19,6 +19,24 @@ const Todo = (props) => {
     const toggleClass = () => {
         setActiveEdit(!isActiveEdit);
     };
+
+    
+    const editHandler = () => {
+        props.dispatchData({type: "EDIT", id: props.id});
+    }
+
+    const deleteHandler = () => {
+        props.dispatchData({type: "DELETE", id: props.id});
+    }
+
+    const addToInProgressHandler = () => {
+        props.dispatchData({type: "ADDTOINPROGRESS", id: props.id});
+    }
+
+    const addToCompletedHandler = () => {
+        props.dispatchData({type: "ADDTOINCOMPLETED", id: props.id});
+    }
+
 
 
     return (
@@ -32,7 +50,7 @@ const Todo = (props) => {
                 <div ref={listRef} className={` ${styles.menu} ${isActiveEdit ? styles.open  : ""}`} onClick={toggleClass} >
                     
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={addToCompletedHandler}>
                             <div className={`${styles.conTooltip} ${styles.top}`}>
                                 <p> <img src={taskToCompleted} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
                                 <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
@@ -41,7 +59,7 @@ const Todo = (props) => {
                             </div>
                     </div>
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={addToInProgressHandler}>
                         <div className={`${styles.conTooltip} ${styles.top}`}>
                             <p> <img src={ToInProgressIcon} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
                             <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
@@ -51,7 +69,7 @@ const Todo = (props) => {
                     </div>
 
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={deleteHandler}>
                         <div className={`${styles.conTooltip} ${styles.top}`}>
                             <p> <img src={deleteIcom} style={{width: "16px", margin: "3px .5px"}} alt="editIcon" /> </p>
                             <div className={styles.tooltip} >
@@ -60,7 +78,7 @@ const Todo = (props) => {
                         </div>
                     </div>
 
-                    <div className={`${styles.con} ${styles.button}`}>
+                    <div className={`${styles.con} ${styles.button}`} onClick={editHandler}>
                         <div className={`${styles.conTooltip} ${styles.top}`}>
                             <p> <img src={editIcom} style={{width: "14px", margin: "2px 1px"}} alt="editIcon" /> </p>
                             <div className={styles.tooltip} >

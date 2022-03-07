@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const AddTodo = () => {
 
-    const [form, setForm] = useState({
+    const editTask = JSON.parse(localStorage.getItem("editTask"));
+    const [form, setForm] = useState(editTask ? editTask : {
         title: "",
         status: "",
         description: ""
@@ -38,18 +39,37 @@ const AddTodo = () => {
         let nowDate = new Date();
         nowDate = nowDate.toLocaleString();
 
-        let newTask = {
+        if (editTask) {
+          const indexTask = tasks.findIndex((task) => task.id === editTask.id);
+          const task = tasks.find((task) => task.id === editTask.id);
+
+          const newTask = {
+            ...task,
+            ...form,
+            updatedTime: nowDate
+          };
+          tasks[indexTask] = newTask;
+
+          localStorage.setItem("taskData", JSON.stringify(tasks));
+
+          localStorage.setItem("editTask", JSON.stringify(""));
+          
+        } else {
+          let newTask = {
             id: tasks.length,
             status: form.status,
             title: form.title,
             description: form.description,
             createdTime: nowDate,
             updatedTime: nowDate
+          }
+
+          tasks.push(newTask)
+
+          localStorage.setItem("taskData", JSON.stringify(tasks));
         }
 
-        tasks.push(newTask)
-
-        localStorage.setItem("taskData", JSON.stringify(tasks));
+        
 
         navigate("/taskmanager");
     };
@@ -59,7 +79,7 @@ const AddTodo = () => {
 
   return (
     <div className={styles.appTodoContainer}>
-      <p className={styles.addTodoTitle}>Add todo</p>
+      <p className={styles.addTodoTitle}>{editTask ? "Edit todo" : "Add todo"}</p>
 
       <form onSubmit={submitHandler}>
         <TextField value={form.title} onChange={changeHandler} name="title" id="outlined-basic" label="Title" variant="outlined" fullWidth />
@@ -90,7 +110,7 @@ const AddTodo = () => {
         />
 
         <Button disabled={form.title && form.status ? false : true} type="submit" variant="contained" color="success" style={{width: "100%", marginTop: "30px"}}>
-            Add
+            {editTask ? "Edit" : "Add"}
         </Button>
 
       </form>
