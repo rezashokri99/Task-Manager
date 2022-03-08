@@ -114,7 +114,7 @@ const Main = () => {
           <Route path="/taskmanager" element={ <TaskManager tasksData={tasksData} dispatchData={dispatchData} /> } />
           <Route path="/searchitems" element={ <SearchItems setSearchValue={setSearchValue} tasksSearchFiltred={tasksSearchFiltred} dispatchData={dispatchData}/> }/>
           <Route path="/addtask" element={<AddTodo setSearchValue={setSearchValue} dispatchData={dispatchData} />} />
-          {/* <Route path="/*" element={<Navigate to="/taskmanager" />} /> */}
+          <Route path="/*" element={<Navigate to="/taskmanager" />} />
         </Routes>
       </div>
       <ToastContainer />
