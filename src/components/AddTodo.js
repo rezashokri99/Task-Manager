@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const AddTodo = () => {
+const AddTodo = ({dispatchData}) => {
 
     const editTask = JSON.parse(localStorage.getItem("editTask"));
     const [form, setForm] = useState(editTask ? editTask : {
@@ -53,7 +53,7 @@ const AddTodo = () => {
           localStorage.setItem("taskData", JSON.stringify(tasks));
 
           localStorage.setItem("editTask", JSON.stringify(""));
-          
+          dispatchData({type: "AFTEREDIT"})
         } else {
           let newTask = {
             id: tasks.length,
@@ -66,11 +66,12 @@ const AddTodo = () => {
 
           tasks.push(newTask);
 
+
           localStorage.setItem("taskData", JSON.stringify(tasks));
+          dispatchData({type: "ADD"});
         }
 
         
-
         navigate("/taskmanager");
     };
 

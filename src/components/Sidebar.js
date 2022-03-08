@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from "./Sidebar.module.css";
 import { GrHomeRounded } from "react-icons/gr";
-import { BsFolder2Open } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
@@ -16,8 +15,9 @@ const Sidebar = () => {
     
     const pathLocation = useLocation().pathname;
 
-    const statusHandler = (type) => {
+    const statusHandler = () => {
         localStorage.setItem("statusclick", JSON.stringify(""));
+        localStorage.setItem("editTask", JSON.stringify(""));
     }
 
     return (
@@ -26,7 +26,7 @@ const Sidebar = () => {
             <div className={styles.menuContainer}>
                 <ul>
                     <li><Link to="./taskmanager" className={pathLocation === "/taskmanager" ? styles.active : ""}><GrHomeRounded /> Overview</Link></li>
-                    <li><Link to="./addtask" className={pathLocation === "/addtask" ? styles.active : ""} onClick={() => statusHandler("inProgress")}><SiAddthis /> Add task</Link></li>
+                    <li><Link to="./addtask" className={pathLocation === "/addtask" ? styles.active : ""} onClick={statusHandler}><SiAddthis /> Add task</Link></li>
                     <li><a href="#1"><BsGithub /> GitHub</a></li>
                     <li><a href="#1"><BsInstagram /> Instagram</a></li>
                     <li><a href="#1"><GrLinkedinOption /> Linkedin</a></li>

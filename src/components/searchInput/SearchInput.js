@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./SearchInput.css";
 import { MdClear } from "react-icons/md";
 
-const SearchInput = () => {
-  const [inputValue, setInputValue] = useState("");
+const SearchInput = ({searchValue, setSearchValue}) => {
 
   var inputFocus = useRef();
   var btnDelete = useRef();
@@ -11,7 +10,7 @@ const SearchInput = () => {
 
   const clearHandler = (e) => {
     e.preventDefault();
-    setInputValue("");
+    setSearchValue("");
     inputFocus.current.classList.remove("isFocus");
   };
 
@@ -27,6 +26,7 @@ const SearchInput = () => {
   const blurHandler = () => {
     inputFocus.current.style.width = "10px";
     inputFocus.current.classList.remove("isFocus");
+    setSearchValue("");
   }
 
 
@@ -38,8 +38,8 @@ const SearchInput = () => {
             <div ref={inputField} className="input-field first" id="first">
               <input
                 ref={inputFocus}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
                 onBlur={blurHandler}
                 onClick={focusHandler}
                 className="input"

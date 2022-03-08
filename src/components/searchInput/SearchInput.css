@@ -97,6 +97,7 @@
 }
 
 .s128 form .inner-form .row .input-field.first input.isFocus {
+  cursor: text;
   width: 100%;
 }
 

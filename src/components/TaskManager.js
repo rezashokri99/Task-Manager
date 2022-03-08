@@ -1,8 +1,7 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Todo from "./Todo";
 import styles from "./TaskManager.module.css";
-import { MdMoreVert } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import InProgress from "./InProgress";
 import Completed from "./Completed";
 
@@ -14,89 +13,26 @@ import Completed from "./Completed";
     
 
 
-const TaskManager = () => {
+const TaskManager = ({tasksData, dispatchData}) => {
 
-  const navigate = useNavigate();
   
+  const [todosTask, setTodosTask] =  useState("");
+  const [inProgressTask, setInProgressTask] =  useState("");
+  const [completedTasks, setCompletedTasks] =  useState("");
 
-  const initialState = JSON.parse(localStorage.getItem("taskData"));
-
-  const reducerData = (state, action) => {
-    switch (action.type) {
-      case "EDIT":
-        navigate("/addtask");
   
-        localStorage.setItem("editTask", JSON.stringify({...state.find((task) => task.id === action.id && task), typeHandler: "edit"}));
-        return state;
-
-      case "DELETE":
-        const tasks = [...state];
-        const indexTask = tasks.findIndex((task) => task.id === action.id);
-
-        tasks.splice(indexTask, 1);
-        tasks.map((task, index) => task.id = index);
-        
-        localStorage.setItem("taskData", JSON.stringify(tasks));
-        return tasks;
-
-      case "ADDTOINPROGRESS" :{
-        const tasks = [...state];
-        const indexTask = tasks.findIndex((task) => task.id === action.id);
-        const task = tasks.find((task) => task.id === action.id);
-        
-        task.status = "inProgress";
-        tasks[indexTask] = task;
-
-        localStorage.setItem("taskData", JSON.stringify(tasks));
-        return tasks;
-      }
-
-      case "ADDTOINCOMPLETED" : {
-        const tasks = [...state];
-        const indexTask = tasks.findIndex((task) => task.id === action.id);
-        const task = tasks.find((task) => task.id === action.id);
-        
-        task.status = "completed";
-        tasks[indexTask] = task;
-
-        localStorage.setItem("taskData", JSON.stringify(tasks));
-        return tasks;
-      }
-
-      case "ADDTOTodoList":{
-        const tasks = [...state];
-        const indexTask = tasks.findIndex((task) => task.id === action.id);
-        const task = tasks.find((task) => task.id === action.id);
-        
-        task.status = "todo";
-        tasks[indexTask] = task;
-
-        localStorage.setItem("taskData", JSON.stringify(tasks));
-        return tasks;
-      }
-        
-
-
-      default:
-        return state;
-    }
-  }
-  
-  // const [tasksData, setTasksData] = useState(JSON.parse(localStorage.getItem("taskData"))); 
-  const [tasksData, dispatchData] = useReducer(reducerData, initialState);
-
-
-
-  const todosTask = tasksData && tasksData.filter((task) => task.status === "todo");
-  const inProgressTask = tasksData && tasksData.filter((task) => task.status === "inProgress");
-  const completedTasks = tasksData && tasksData.filter((task) => task.status === "completed");
+  useEffect(() => {
+    
+    setTodosTask(tasksData.filter((task) => task.status === "todo"));
+    setInProgressTask(tasksData.filter((task) => task.status === "inProgress"));
+    // setInProgressTask(tasksData ? tasksData.filter((task) => task.status === "inProgress") : "");
+    setCompletedTasks(tasksData.filter((task) => task.status === "completed"));
+    // setCompletedTasks(tasksData ? tasksData.filter((task) => task.status === "completed") : "");
+  }, [tasksData])
 
   const statusHandler = (type) => {
     localStorage.setItem("statusclick", JSON.stringify(type));
   }
-
-
-
 
   return (
     <>

@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { MdMoreVert } from "react-icons/md";
 import styles from "./Todo.InProgress.completed.module.css";
 import editIcom from "../assets/icons/edit.svg";
 import deleteIcom from "../assets/icons/delete.svg";
 import ToInProgressIcon from "../assets/icons/taskToInProgress.svg";
 import taskToCompleted from "../assets/icons/taskToCompleted.svg";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -20,9 +20,11 @@ const Todo = (props) => {
         setActiveEdit(!isActiveEdit);
     };
 
+    const navigate = useNavigate();
     
     const editHandler = () => {
         props.dispatchData({type: "EDIT", id: props.id});
+        navigate("/addtask");
     }
 
     const deleteHandler = () => {
