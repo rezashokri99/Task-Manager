@@ -6,9 +6,13 @@ import UserInfo from "./userInfo/UserInfo";
 import TaskManager from "./TaskManager";
 import AddTodo from "./AddTodo";
 import { Navigate, Route, Routes } from "react-router-dom";
-
+import { toast, ToastContainer } from "react-toastify";
+import Notify from "./Notify";
+// import Notify from "./Notify";
 
 const Main = () => {
+
+  // const notify = () => toast("Wow so easy!");
 
   const initialState = JSON.parse(localStorage.getItem("taskData")) ? JSON.parse(localStorage.getItem("taskData")) : [];
 
@@ -20,9 +24,7 @@ const Main = () => {
       }
       case "EDIT":{
         localStorage.setItem("editTask", JSON.stringify(state.find((task) => task.id === action.id && task)));
-        
         return state;
-        
       }
       
       case "AFTEREDIT" : {
@@ -37,7 +39,7 @@ const Main = () => {
 
         tasks.splice(indexTask, 1);
         tasks.map((task, index) => task.id = index);
-        
+    
         localStorage.setItem("taskData", JSON.stringify(tasks));
         return tasks;
 
@@ -112,6 +114,7 @@ const Main = () => {
           <Route path="/*" element={<Navigate to="/taskmanager" />} />
         </Routes>
       </div>
+      <ToastContainer />
     </div>
   );
 };

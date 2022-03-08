@@ -5,6 +5,7 @@ import deleteIcom from "../assets/icons/delete.svg";
 import ToInProgressIcon from "../assets/icons/taskToInProgress.svg";
 import taskToCompleted from "../assets/icons/taskToCompleted.svg";
 import { useNavigate } from 'react-router-dom';
+import Notify from './Notify';
 
 
 
@@ -29,14 +30,17 @@ const Todo = (props) => {
 
     const deleteHandler = () => {
         props.dispatchData({type: "DELETE", id: props.id});
+        Notify(`${props.title} successfully removed.`, "error");
     }
 
     const addToInProgressHandler = () => {
         props.dispatchData({type: "ADDTOINPROGRESS", id: props.id});
+        Notify(`${props.title} added to in progress.`, "change");
     }
 
     const addToCompletedHandler = () => {
         props.dispatchData({type: "ADDTOINCOMPLETED", id: props.id});
+        Notify(`${props.title} added to completed.`, "change");
     }
 
 

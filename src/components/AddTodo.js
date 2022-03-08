@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import styles from "./AppTodo.module.css";
 import { Button, TextareaAutosize } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Notify from "./Notify";
 
 
 
@@ -54,6 +55,8 @@ const AddTodo = ({dispatchData}) => {
 
           localStorage.setItem("editTask", JSON.stringify(""));
           dispatchData({type: "AFTEREDIT"})
+          Notify(`Editing applied successfully.`, "success");
+
         } else {
           let newTask = {
             id: tasks.length,
@@ -69,6 +72,7 @@ const AddTodo = ({dispatchData}) => {
 
           localStorage.setItem("taskData", JSON.stringify(tasks));
           dispatchData({type: "ADD"});
+          Notify(`${newTask.title} successfully added to ${newTask.status === "todo" ? "do" : newTask.status}.`, "success");
         }
 
         

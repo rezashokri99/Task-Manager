@@ -4,6 +4,8 @@ import editIcom from "../assets/icons/edit.svg";
 import deleteIcom from "../assets/icons/delete.svg";
 import taskToCompleted from "../assets/icons/taskToCompleted.svg";
 import taskToTodoList from "../assets/icons/taskToTodoList.svg";
+import { useNavigate } from 'react-router-dom';
+import Notify from './Notify';
 
 
 const InProgress = (props) => {
@@ -18,22 +20,28 @@ const InProgress = (props) => {
         setActiveEdit(!isActiveEdit);
     };
 
+    const navigate = useNavigate();
 
 
     const editHandler = () => {
         props.dispatchData({type: "EDIT", id: props.id});
+        navigate("/addtask");
     }
 
     const deleteHandler = () => {
         props.dispatchData({type: "DELETE", id: props.id});
+        Notify(`${props.title} successfully removed.`, "error");
+
     }
 
     const addToTodoListHandler = () => {
         props.dispatchData({type: "ADDTOTodoList", id: props.id});
+        Notify(`${props.title} added to do.`, "change");
     }
 
     const addToCompletedHandler = () => {
         props.dispatchData({type: "ADDTOINCOMPLETED", id: props.id});
+        Notify(`${props.title} added to completed.`, "change");
     }
 
 
