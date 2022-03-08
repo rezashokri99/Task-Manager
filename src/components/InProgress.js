@@ -58,46 +58,42 @@ const InProgress = (props) => {
                         
 
 
-                    <div className={`${styles.con} ${styles.button}`} onClick={addToCompletedHandler}>
-                        <div className={`${styles.conTooltip} ${styles.top}`}>
-                            <p> <img src={taskToCompleted} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
-                            <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
-                                <p>Add to inprogress</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={`${styles.con} ${styles.button}`} onClick={addToTodoListHandler}>
+                        <div className={`${styles.con} ${styles.button}`} onClick={addToCompletedHandler}>
                             <div className={`${styles.conTooltip} ${styles.top}`}>
-                                <p> <img src={taskToTodoList} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
+                                <p> <img src={taskToCompleted} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
                                 <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
-                                    <p>Add to Todolist</p>
+                                    <p>Add to inprogress</p>
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
-                    <div className={`${styles.con} ${styles.button}`} onClick={deleteHandler}>
-                        <div className={`${styles.conTooltip} ${styles.top}`}>
-                            <p> <img src={deleteIcom} style={{width: "16px", margin: "3px .5px"}} alt="editIcon" /> </p>
-                            <div className={styles.tooltip} >
-                                <p>Delete</p>
+                        <div className={`${styles.con} ${styles.button}`} onClick={addToTodoListHandler}>
+                                <div className={`${styles.conTooltip} ${styles.top}`}>
+                                    <p> <img src={taskToTodoList} style={{width: "18px", margin: "2px -1px"}} alt="editIcon" /> </p>
+                                    <div className={`${styles.tooltip} ${styles.tooltipLong}`} >
+                                        <p>Add to Todolist</p>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div className={`${styles.con} ${styles.button}`} onClick={deleteHandler}>
+                            <div className={`${styles.conTooltip} ${styles.top}`}>
+                                <p> <img src={deleteIcom} style={{width: "16px", margin: "3px .5px"}} alt="editIcon" /> </p>
+                                <div className={styles.tooltip} >
+                                    <p>Delete</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className={`${styles.con} ${styles.button}`} onClick={editHandler}>
-                        <div className={`${styles.conTooltip} ${styles.top}`}>
-                            <p> <img src={editIcom} style={{width: "14px", margin: "2px 1px"}} alt="editIcon" /> </p>
-                            <div className={styles.tooltip} >
-                                <p>Edit</p>
+                        <div className={`${styles.con} ${styles.button}`} onClick={editHandler}>
+                            <div className={`${styles.conTooltip} ${styles.top}`}>
+                                <p> <img src={editIcom} style={{width: "14px", margin: "2px 1px"}} alt="editIcon" /> </p>
+                                <div className={styles.tooltip} >
+                                    <p>Edit</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         
-                        
-                        {/* <div className={styles.button}></div>
-                        <div className={styles.button}></div>
-                        <div className={styles.button}></div> */}
                     </div>
                 </span>
             </div>

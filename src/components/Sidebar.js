@@ -7,6 +7,7 @@ import { GrLinkedinOption } from "react-icons/gr";
 import { FiSettings } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 import { SiAddthis } from "react-icons/si";
+import { FiSearch } from "react-icons/fi";
 import { Link, useLocation } from 'react-router-dom';
 
 
@@ -20,6 +21,8 @@ const Sidebar = () => {
         localStorage.setItem("editTask", JSON.stringify(""));
     }
 
+
+
     return (
         <div className={styles.sidebarContainer}>
             <div className={styles.title}>Todo App</div>
@@ -27,6 +30,7 @@ const Sidebar = () => {
                 <ul>
                     <li><Link to="./taskmanager" className={pathLocation === "/taskmanager" ? styles.active : ""}><GrHomeRounded /> <span>Overview</span></Link></li>
                     <li><Link to="./addtask" className={pathLocation === "/addtask" ? styles.active : ""} onClick={statusHandler}><SiAddthis /> <span>Add task</span></Link></li>
+                    <li><Link to="./searchitems" className={pathLocation === "/searchitems" ? styles.active : ""}><FiSearch /> <span>Search</span></Link></li>
                     <li><a href="#1"><BsGithub /> <span>GitHub</span></a></li>
                     <li><a href="#1"><BsInstagram /> <span>Instagram</span></a></li>
                     <li><a href="#1"><GrLinkedinOption /> <span>Linkedin</span></a></li>

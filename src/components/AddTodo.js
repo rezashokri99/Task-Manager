@@ -11,7 +11,7 @@ import Notify from "./Notify";
 
 
 
-const AddTodo = ({dispatchData}) => {
+const AddTodo = ({dispatchData, setSearchValue}) => {
 
     const editTask = JSON.parse(localStorage.getItem("editTask"));
     const [form, setForm] = useState(editTask ? editTask : {
@@ -50,10 +50,10 @@ const AddTodo = ({dispatchData}) => {
             updatedTime: nowDate
           };
           tasks[indexTask] = newTask;
-
+          
+          localStorage.setItem("editTask", JSON.stringify(""));
           localStorage.setItem("taskData", JSON.stringify(tasks));
 
-          localStorage.setItem("editTask", JSON.stringify(""));
           dispatchData({type: "AFTEREDIT"})
           Notify(`Editing applied successfully.`, "success");
 
@@ -69,15 +69,22 @@ const AddTodo = ({dispatchData}) => {
 
           tasks.push(newTask);
 
+          console.log("add");
 
+          localStorage.setItem("editTask", JSON.stringify(""));
           localStorage.setItem("taskData", JSON.stringify(tasks));
           dispatchData({type: "ADD"});
           Notify(`${newTask.title} successfully added to ${newTask.status === "todo" ? "do" : newTask.status}.`, "success");
         }
-
         
         navigate("/taskmanager");
+        setSearchValue("")
     };
+
+    const goToTaskManager = () => {
+      localStorage.setItem("editTask", JSON.stringify(""));
+      navigate("/taskmanager");
+    }
 
 
 
@@ -114,9 +121,10 @@ const AddTodo = ({dispatchData}) => {
             style={{ width: "100%", minHeight: "fitContent", height: 150, padding: 10, fontSize: 16, borderRadius: "4px"}}
         />
 
-        <Button disabled={form.title && form.status ? false : true} type="submit" variant="contained" color="success" style={{width: "100%", marginTop: "30px"}}>
+        <Button disabled={form.title && form.status ? false : true} type="submit" variant="contained" color="success" style={{width: "100%", margin: "30px 0"}}>
             {editTask ? "Edit" : "Add"}
         </Button>
+        <Button onClick={goToTaskManager} variant="contained" fullWidth>Go to task manager</Button>
 
       </form>
     </div>

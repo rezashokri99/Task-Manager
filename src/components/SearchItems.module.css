@@ -1,0 +1,47 @@
+.taskManager{
+    display: flex;
+    height: 100%;
+}
+.todoSection, .progressSection, .completedSection{
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F9F9;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: fit-content;
+    min-height: 600px;
+    padding: 20px 15px;
+}
+
+.todoTypeTitle, .progressTypeTitle, .completedTypeTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.todoTypeTitle p, .progressTypeTitle p, .completedTypeTitle p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.todoTypeTitle span, .progressTypeTitle span, .completedTypeTitle span {
+    background-color: #e4eeed;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    font-size: 1.3rem;
+    line-height: 25px;
+    color: #289c87;
+    text-align: center;
+    border-radius: 8px;
+}
+.todosList, .progressesList, .completedsList {
+    min-height: calc(100vh - 40vh);
+}

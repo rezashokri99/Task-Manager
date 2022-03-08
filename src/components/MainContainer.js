@@ -6,48 +6,49 @@ import UserInfo from "./userInfo/UserInfo";
 import TaskManager from "./TaskManager";
 import AddTodo from "./AddTodo";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import Notify from "./Notify";
-// import Notify from "./Notify";
+import { ToastContainer } from "react-toastify";
+import SearchItems from "./SearchItems";
 
 const Main = () => {
-
-  // const notify = () => toast("Wow so easy!");
-
-  const initialState = JSON.parse(localStorage.getItem("taskData")) ? JSON.parse(localStorage.getItem("taskData")) : [];
+  const initialState = JSON.parse(localStorage.getItem("taskData"))
+    ? JSON.parse(localStorage.getItem("taskData"))
+    : [];
 
   const reducerData = (state, action) => {
     switch (action.type) {
-      case "ADD":{
+      case "ADD": {
         let tasks = JSON.parse(localStorage.getItem("taskData"));
         return tasks;
       }
-      case "EDIT":{
-        localStorage.setItem("editTask", JSON.stringify(state.find((task) => task.id === action.id && task)));
+      case "EDIT": {
+        localStorage.setItem(
+          "editTask",
+          JSON.stringify(state.find((task) => task.id === action.id && task))
+        );
         return state;
       }
-      
-      case "AFTEREDIT" : {
+
+      case "AFTEREDIT": {
         let tasksLS = JSON.parse(localStorage.getItem("taskData"));
+        localStorage.setItem("editTask", JSON.stringify(""));
         return tasksLS;
       }
 
-        
       case "DELETE":
         const tasks = [...state];
         const indexTask = tasks.findIndex((task) => task.id === action.id);
 
         tasks.splice(indexTask, 1);
-        tasks.map((task, index) => task.id = index);
-    
+        tasks.map((task, index) => (task.id = index));
+
         localStorage.setItem("taskData", JSON.stringify(tasks));
         return tasks;
 
-      case "ADDTOINPROGRESS" :{
+      case "ADDTOINPROGRESS": {
         const tasks = [...state];
         const indexTask = tasks.findIndex((task) => task.id === action.id);
         const task = tasks.find((task) => task.id === action.id);
-        
+
         task.status = "inProgress";
         tasks[indexTask] = task;
 
@@ -55,11 +56,11 @@ const Main = () => {
         return tasks;
       }
 
-      case "ADDTOINCOMPLETED" : {
+      case "ADDTOINCOMPLETED": {
         const tasks = [...state];
         const indexTask = tasks.findIndex((task) => task.id === action.id);
         const task = tasks.find((task) => task.id === action.id);
-        
+
         task.status = "completed";
         tasks[indexTask] = task;
 
@@ -67,37 +68,38 @@ const Main = () => {
         return tasks;
       }
 
-      case "ADDTOTodoList":{
+      case "ADDTOTodoList": {
         const tasks = [...state];
         const indexTask = tasks.findIndex((task) => task.id === action.id);
         const task = tasks.find((task) => task.id === action.id);
-        
+
         task.status = "todo";
         tasks[indexTask] = task;
 
         localStorage.setItem("taskData", JSON.stringify(tasks));
         return tasks;
       }
-        
-
 
       default:
         return state;
     }
-  }
-  
+  };
 
   const [tasksData, dispatchData] = useReducer(reducerData, initialState);
 
   const [searchValue, setSearchValue] = useState("");
 
-  const tasksSearchFiltred = tasksData.filter((task) => (task.title.toLowerCase()).includes(searchValue.toLowerCase()));
-
+  const tasksSearchFiltred = tasksData.filter((task) =>
+    task.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainHeader}>
-        <SearchInput searchValue={searchValue} setSearchValue={setSearchValue } />
+        <SearchInput
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
         <div className={styles.userInfo}>
           <div className={styles.notificationContainer}>
             <IoNotificationsOutline />
@@ -109,8 +111,9 @@ const Main = () => {
 
       <div className={styles.taskManagerContainer}>
         <Routes>
-          <Route path="/taskmanager" element={<TaskManager tasksData={searchValue ? tasksSearchFiltred : tasksData} dispatchData={dispatchData} />} />
-          <Route path="/addtask" element={<AddTodo dispatchData={dispatchData} />} />
+          <Route path="/taskmanager" element={ <TaskManager tasksData={tasksData} dispatchData={dispatchData} /> } />
+          <Route path="/searchitems" element={ <SearchItems setSearchValue={setSearchValue} tasksSearchFiltred={tasksSearchFiltred} dispatchData={dispatchData}/> }/>
+          <Route path="/addtask" element={<AddTodo setSearchValue={setSearchValue} dispatchData={dispatchData} />} />
           <Route path="/*" element={<Navigate to="/taskmanager" />} />
         </Routes>
       </div>
