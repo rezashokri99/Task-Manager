@@ -31,9 +31,9 @@ const Sidebar = () => {
                     <li><Link to="./taskmanager" className={pathLocation === "/taskmanager" ? styles.active : ""}><GrHomeRounded /> <span>Overview</span></Link></li>
                     <li><Link to="./addtask" className={pathLocation === "/addtask" ? styles.active : ""} onClick={statusHandler}><SiAddthis /> <span>Add task</span></Link></li>
                     <li><Link to="./searchitems" className={pathLocation === "/searchitems" ? styles.active : ""}><FiSearch /> <span>Search</span></Link></li>
-                    <li><a href="#1"><BsGithub /> <span>GitHub</span></a></li>
-                    <li><a href="#1"><BsInstagram /> <span>Instagram</span></a></li>
-                    <li><a href="#1"><GrLinkedinOption /> <span>Linkedin</span></a></li>
+                    <li><Link to="https://github.com/rezashokri99"><BsGithub /> <span>GitHub</span></Link></li>
+                    <li><Link to="https://www.instagram.com/reza_shokri99/"><BsInstagram /> <span>Instagram</span></Link></li>
+                    <li><Link to="https://www.linkedin.com/in/reza-shokri-9983581b9/"><GrLinkedinOption /> <span>Linkedin</span></Link></li>
                 </ul>
                 <ul>
                     <li><a href="#1"><FiSettings /><span>Settings</span></a></li>
