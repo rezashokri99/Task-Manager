@@ -45,3 +45,30 @@
     top: 1px;
 }
 
+
+
+
+@media (max-width: 1300px) {
+    .mainContainer{
+        padding: 20px 20px 20px 20px ;
+    }
+}
+
+
+@media (max-width: 580px) {
+    .mainContainer {
+        width: 100%;
+        border-left: none;
+        margin-top: 50px;
+        padding: 0 20px 20px 20px ;
+    }
+    .mainHeader{
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notificationContainer {
+        display: none;
+    }
+}

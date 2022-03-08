@@ -78,3 +78,133 @@
 
 .menuContainer ul li:first-child {
 }
+
+
+
+
+@media (max-width: 1300px) {
+    .sidebarContainer {
+        padding: 50px 0 0 30px;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .sidebarContainer {
+        padding: 50px 0 0 20px;
+    }
+}
+
+@media (max-width: 660px) {
+    .sidebarContainer {
+        padding: 50px 0 0 10px;
+    }
+}
+
+
+@media (max-width: 580px) {
+    .sidebarContainer {
+        width: 100%;
+        background-color: #FFF;
+        padding: 0 10px;
+        position: fixed;
+        height: 50px;
+        z-index: 35;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 5px 10px #eeeeee;
+    }
+
+    .title{
+        display: flex;
+        align-items: center;
+    }
+
+    .menuContainer {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        align-items: center;
+
+    }
+    .menuContainer ul{
+        display: flex;
+    }
+    .menuContainer ul:nth-child(2){
+        margin-left: 20px;
+    }
+    .menuContainer ul li a.active::after{
+        position: absolute;
+        content: "";
+        width: 28px;
+        height: 4px;
+        background-color: #2C9985;
+        transition: all 0.3s ease-in-out;
+        border-radius: 2px;
+        bottom: 8px;
+        right: 12px;
+    }
+    
+
+    .menuContainer ul a span {
+        display: none;
+    }
+    .menuContainer ul svg {
+        display: block;
+        margin-right: 15px;
+        font-size: 22px;
+    }
+    .menuContainer ul:last-child li:last-child svg {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .title{
+        font-size: 1.2rem;
+    }
+    .menuContainer ul:nth-child(2){
+        margin-left: 10px;
+    }
+
+    .menuContainer ul svg {
+        margin-right: 15px;
+        font-size: 20px;
+    }
+
+    .menuContainer ul li a.active::after{
+        width: 26px;
+        right: 12px;
+    }
+    .menuContainer ul:last-child svg {
+        margin-right: 10px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .menuContainer ul svg {
+        margin-right: 15px;
+        font-size: 18px;
+    }
+
+    .menuContainer ul li a.active::after{
+        width: 24px;
+        right: 12px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .menuContainer ul:nth-child(2){
+        margin-left: 15px;
+    }
+    .menuContainer ul svg {
+        margin-right: 10px;
+    }
+    .menuContainer ul li a.active::after{
+        width: 24px;
+        right: 7px;
+    }
+}

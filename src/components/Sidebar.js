@@ -25,15 +25,15 @@ const Sidebar = () => {
             <div className={styles.title}>Todo App</div>
             <div className={styles.menuContainer}>
                 <ul>
-                    <li><Link to="./taskmanager" className={pathLocation === "/taskmanager" ? styles.active : ""}><GrHomeRounded /> Overview</Link></li>
-                    <li><Link to="./addtask" className={pathLocation === "/addtask" ? styles.active : ""} onClick={statusHandler}><SiAddthis /> Add task</Link></li>
-                    <li><a href="#1"><BsGithub /> GitHub</a></li>
-                    <li><a href="#1"><BsInstagram /> Instagram</a></li>
-                    <li><a href="#1"><GrLinkedinOption /> Linkedin</a></li>
+                    <li><Link to="./taskmanager" className={pathLocation === "/taskmanager" ? styles.active : ""}><GrHomeRounded /> <span>Overview</span></Link></li>
+                    <li><Link to="./addtask" className={pathLocation === "/addtask" ? styles.active : ""} onClick={statusHandler}><SiAddthis /> <span>Add task</span></Link></li>
+                    <li><a href="#1"><BsGithub /> <span>GitHub</span></a></li>
+                    <li><a href="#1"><BsInstagram /> <span>Instagram</span></a></li>
+                    <li><a href="#1"><GrLinkedinOption /> <span>Linkedin</span></a></li>
                 </ul>
                 <ul>
-                    <li><a href="#1"><FiSettings />Settings</a></li>
-                    <li><a href="#1"><MdLogout />Log out</a></li>
+                    <li><a href="#1"><FiSettings /><span>Settings</span></a></li>
+                    <li><a href="#1"><MdLogout /><span>Log out</span></a></li>
                 </ul>
             </div>
 

@@ -104,3 +104,15 @@
 .s128 form .inner-form .row .input-field.first input.isFocus ~ .clear {
   opacity: 1;
 }
+
+@media (max-width: 700px) {
+  .s128 {
+    width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .s128 {
+    padding-right: 0;
+  }
+}

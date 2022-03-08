@@ -134,4 +134,34 @@ label:hover {
     width: 35px;
     border-radius: 50%;
 }
+.list {
+	background-color: #949494;
+	color: #FFF;
+}
+.list li label {
+	color: #FFF;
+}
 
+
+
+@media (max-width: 580px) {
+	.list {
+		width: 160px;
+		top: 30px;
+	}
+}
+
+@media (max-width: 480px) {
+	.userinfoContainer{
+		margin-left: 10px;
+	}
+	
+	details {
+		margin-right: 10px;
+		position: relative;
+	}
+	.list {
+		width: 155px;
+		top: 30px;
+	}
+}
