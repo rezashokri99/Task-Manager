@@ -25,7 +25,7 @@ const Main = () => {
       <div className={styles.taskManagerContainer}>
         <Routes>
           <Route path="/taskmanager" element={<TaskManager />} />
-          <Route path="/addtodo" element={<AddTodo />} />
+          <Route path="/addtask" element={<AddTodo />} />
           <Route path="/*" element={<Navigate to="/taskmanager" />} />
         </Routes>
       </div>

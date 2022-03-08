@@ -24,7 +24,8 @@ const TaskManager = () => {
   const reducerData = (state, action) => {
     switch (action.type) {
       case "EDIT":
-        navigate("/addtodo");
+        navigate("/addtask");
+  
         localStorage.setItem("editTask", JSON.stringify({...state.find((task) => task.id === action.id && task), typeHandler: "edit"}));
         return state;
 
@@ -90,7 +91,9 @@ const TaskManager = () => {
   const inProgressTask = tasksData && tasksData.filter((task) => task.status === "inProgress");
   const completedTasks = tasksData && tasksData.filter((task) => task.status === "completed");
 
-  
+  const statusHandler = (type) => {
+    localStorage.setItem("statusclick", JSON.stringify(type));
+  }
 
 
 
@@ -105,10 +108,10 @@ const TaskManager = () => {
         <div className={styles.todoSection}>
           <div className={styles.todoTypeTitle}>
             <p>To do</p>
-            <span>2</span>
+            <span>{todosTask.length}</span>
           </div>
 
-          <Link to="/addtodo" className={styles.addTodoBtn}>
+          <Link to="/addtask" className={styles.addTodoBtn} onClick={() => statusHandler("todo")}>
             +
           </Link>
 
@@ -182,10 +185,10 @@ const TaskManager = () => {
         <div className={styles.progressSection}>
           <div className={styles.progressTypeTitle}>
             <p>In progress</p>
-            <span>2</span>
+            <span>{inProgressTask.length}</span>
           </div>
 
-          <Link to="/addtodo" className={styles.addProgressBtn}>
+          <Link to="/addtask" className={styles.addProgressBtn} onClick={() => statusHandler("inProgress")}>
             +
           </Link>
 
@@ -258,10 +261,10 @@ const TaskManager = () => {
         <div className={styles.completedSection}>
           <div className={styles.completedTypeTitle}>
             <p>In completed</p>
-            <span>2</span>
+            <span>{completedTasks.length}</span>
           </div>
 
-          <Link to="/addtodo" className={styles.addCompletedBtn}>
+          <Link to="/addtask" className={styles.addCompletedBtn} onClick={() => statusHandler("completed")}>
             +
           </Link>
 

@@ -24,7 +24,6 @@
 
 .menuContainer ul li{
     /* margin-bottom: 30px; */
-    
 }
 
 .menuContainer ul a {
@@ -38,20 +37,30 @@
     align-items: center;
 }
 
+
 .menuContainer ul svg {
     margin-right: 5px;
 }
+.menuContainer ul li:first-child path {
+    stroke: #8d8d8d;
+}
+
+.menuContainer ul li:first-child a.active path {
+    stroke: black;
+}
+
 
 .menuContainer ul a:hover {
     color: #4d4d4d;
 }
 
 
-.menuContainer ul:first-child li:first-child a:first-child {
+.menuContainer ul li a.active {
     color: black;
+    width: 100%;
 }
 
-.menuContainer ul:first-child li:first-child a:first-child::after {
+.menuContainer ul li a.active::after {
     /* content: "";
     width: .2px;
     font-weight: 800;
@@ -65,5 +74,7 @@
     transition: all 0.3s ease-in-out;
     border-radius: 2px;
     right: 0;
+}
 
+.menuContainer ul li:first-child {
 }

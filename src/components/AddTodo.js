@@ -15,7 +15,7 @@ const AddTodo = () => {
     const editTask = JSON.parse(localStorage.getItem("editTask"));
     const [form, setForm] = useState(editTask ? editTask : {
         title: "",
-        status: "",
+        status: JSON.parse(localStorage.getItem("statusclick")) ? JSON.parse(localStorage.getItem("statusclick")) : "" ,
         description: ""
     });
 
@@ -64,7 +64,7 @@ const AddTodo = () => {
             updatedTime: nowDate
           }
 
-          tasks.push(newTask)
+          tasks.push(newTask);
 
           localStorage.setItem("taskData", JSON.stringify(tasks));
         }
